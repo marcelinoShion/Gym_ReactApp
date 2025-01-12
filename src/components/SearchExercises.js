@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import{Box, Button, Stack,TextField ,Typography} from '@mui/material'
 import { fetchData } from '../utils/fetchData'
+import { fetchDataBodyPart } from '../utils/fetchDataBodyPart'
 import HorizontalScrollbar from './HorizontalScrollbar'
 
 const SearchExercises = ({setExercises,bodyPart,setBodyPart}) => {
@@ -10,7 +11,7 @@ const SearchExercises = ({setExercises,bodyPart,setBodyPart}) => {
 
     useEffect(() => {
       const fetchExercisesData = async () =>{
-        const bodyPartsData = (await fetchData()).map((exercises)=> exercises.bodyParts.flat());
+        const bodyPartsData = (await fetchDataBodyPart()).map((e)=> e.bodyParts.flat());
         
         setBodyParts(bodyPartsData);
       }
